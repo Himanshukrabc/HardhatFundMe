@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -19,5 +16,13 @@
     "hardhat-deploy": "^0.11.24",
     "hardhat-gas-reporter": "^1.0.9",
     "solidity-coverage": "^0.8.2"
+  },
+  "scripts": {
+    "test": "hardhat test",
+    "test:staging": "hardhat test --network goerli",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+    "format": "prettier --write .",
+    "coverage": "hardhat coverage"
   }
 }
