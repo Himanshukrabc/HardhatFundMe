@@ -25,8 +25,8 @@ contract FundMe{
         uint256 valueInUSD = getConversionRate(msg.value,priceFeed);
         require(valueInUSD>=MIN_USD,"Not Enough funds sent");//1e18wei==1e9gwei==1ETH
         funders.push(msg.sender);
-        addressToAmtFunded[msg.sender]=valueInUSD;
-        fundsInContract+=valueInUSD;
+        addressToAmtFunded[msg.sender]=msg.value;
+        fundsInContract+=msg.value;
     }
 
     function getPrice(AggregatorV3Interface PriceFeed) public view returns(uint256){
@@ -60,13 +60,5 @@ contract FundMe{
         if(msg.sender!=i_owner)revert notOwner();
         // require(i_owner==msg.sender,"Sender is not i_Owner");
         _;
-    }
-
-    receive() external  payable{
-        fund();
-    }
-
-    fallback() external  payable{
-        fund();
     }
 }

@@ -7,7 +7,7 @@ const { verify } = require("../utils/verify");
 
 // module.exports.default = (hre)=>{
 // {getNamedAccounts, deployments} = hre
-module.exports.default = async ({ getNamedAccounts, deployments }) => {
+module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
     // namedAccounts ==> see hardhat.config
